@@ -25,13 +25,13 @@ def on_message(client, userdata, message):
 
 
 
-client = mqtt.Client(callback_api_version=CallbackAPIVersion.VERSION2, client_id=MQTT_CLIENT, protocol=mqtt.MQTTv311)
+client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2, client_id=MQTT_CLIENT, protocol=mqtt.MQTTv311)
 client.username_pw_set(username=MQTT_USER, password=MQTT_PASS)
 client.on_connect = on_connect
 client.on_disconnect = on_desconnect
 client.on_message = on_message
 client.reconnect_delay_set(min_delay=2, max_delay=33)
-client.connect_async(host=MQTT_HOST, port=MQTT_PORT, keepalive=66)
+client.connect_async(host=MQTT_HOST, port=int(MQTT_PORT), keepalive=66)
 client.loop_forever(retry_first_connection=True)
 
 
