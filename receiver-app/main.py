@@ -18,7 +18,7 @@ def on_desconnect(client, userdata, disconnect_flags, reason_code, propeties):
 def on_message(client, userdata, message):
     try:
         payload = message.payload.decode("utf-8")
-        print(f'{message}')
+        print(f'{message} {payload}')
 
     except Exception:
         print(f'ERROR {str(message)}')
